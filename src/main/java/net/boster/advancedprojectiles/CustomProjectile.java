@@ -18,15 +18,13 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Getter
 @Setter
@@ -46,6 +44,7 @@ public class CustomProjectile {
 
     @NotNull protected List<Entity> untouchableEntities = new ArrayList<>();
     @NotNull protected List<Material> fatalBlocks = new ArrayList<>();
+    @NotNull protected Collection<EntityType> ignoredEntityTypes = new HashSet<>();
 
     @NotNull CustomProjectileActions actions = new CustomProjectileActions();
 
@@ -197,19 +196,11 @@ public class CustomProjectile {
 
         double rw = width + 5;
 
-        Vector min = new Vector(
-                location.getX() - width,
-                location.getY() - width,
-                location.getZ() - width);
-        Vector max = new Vector(
-                location.getX() + width,
-                location.getY() + width,
-                location.getZ() + width);
-
         for(Entity ent : location.getWorld().getNearbyEntities(location, rw, rw, rw)) {
+            if(ignoredEntityTypes.contains(ent.getType())) continue;
             if(untouchableEntities.contains(ent)) continue;
 
-            if(ent.getBoundingBox().overlaps(min, max)) {
+            if(AdvancedProjectiles.getBoundingBoxHelper().isIn(ent, this)) {
                 CustomProjectileStrikeEntityEvent e = new CustomProjectileStrikeEntityEvent(this, ent);
                 Bukkit.getPluginManager().callEvent(e);
 
