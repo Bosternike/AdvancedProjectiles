@@ -1,6 +1,6 @@
 # AdvancedProjectiles
 
-## Dependency:
+## Dependency
 
 ### Maven
 ```xml
