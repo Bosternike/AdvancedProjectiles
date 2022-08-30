@@ -38,6 +38,8 @@ public class BoundingBoxHelperImpl implements BoundingBoxHelper {
                 projectile.getLocation().getY() + projectile.getWidth(),
                 projectile.getLocation().getZ() + projectile.getWidth());
 
+        min.subtract(projectile.getRunner().getSpeed());
+
         return ent.getBoundingBox().overlaps(min, max);
     }
 }

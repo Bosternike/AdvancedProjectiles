@@ -3,6 +3,7 @@ package net.boster.advancedprojectiles.runners;
 import net.boster.advancedprojectiles.CustomProjectile;
 import net.boster.advancedprojectiles.ProjectileRunner;
 import org.bukkit.Location;
+import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
 public class MathProjectileRunner extends ProjectileRunner<Location> {
@@ -39,5 +40,10 @@ public class MathProjectileRunner extends ProjectileRunner<Location> {
         xp = (projectile.getLocation().getX() - dir.getX()) / bigest * -speed;
         yp = (projectile.getLocation().getY() - dir.getY()) / bigest * -speed;
         zp = (projectile.getLocation().getZ() - dir.getZ()) / bigest * -speed;
+    }
+
+    @Override
+    public Vector getSpeed() {
+        return new Vector(speed, speed, speed);
     }
 }

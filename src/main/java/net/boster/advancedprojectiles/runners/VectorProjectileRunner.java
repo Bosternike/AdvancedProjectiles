@@ -32,4 +32,9 @@ public class VectorProjectileRunner extends ProjectileRunner<Vector> {
     public void setDirection(@NotNull Vector vector) {
         vecOffSet = vector;
     }
+
+    @Override
+    public Vector getSpeed() {
+        return vecOffSet.clone();
+    }
 }
