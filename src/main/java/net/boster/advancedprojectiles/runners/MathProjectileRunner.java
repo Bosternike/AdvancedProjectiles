@@ -44,6 +44,6 @@ public class MathProjectileRunner extends ProjectileRunner<Location> {
 
     @Override
     public Vector getSpeed() {
-        return new Vector(speed, speed, speed);
+        return new Vector(xp, yp, zp);
     }
 }
