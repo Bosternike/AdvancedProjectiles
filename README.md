@@ -15,7 +15,7 @@
 <dependency>
     <groupId>com.github.Bosternike</groupId>
     <artifactId>AdvancedProjectiles</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -29,6 +29,6 @@ allprojects {
 ```
 ```groovy
 dependencies {
-    implementation 'com.github.Bosternike:AdvancedProjectiles:1.0.1'
+    implementation 'com.github.Bosternike:AdvancedProjectiles:1.0.2'
 }
 ```
